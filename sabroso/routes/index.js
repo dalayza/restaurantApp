@@ -11,10 +11,46 @@ router.get('/', function(req, res, next) {
       console.log(err);
     }
     res.render('index', {
-      title: 'Restaurant Saboroso',
+      title: 'Restaurant Saboroso!',
       menus: results
     });
 
+  });
+
+});
+
+
+router.get('/contacts', function(req, res, next) {
+
+  res.render('contacts', {
+    title: 'Contato - Restaurant Saboroso!'
+  });
+
+});
+
+
+router.get('/menus', function(req, res, next) {
+
+  res.render('menus', {
+    title: 'Menus - Restaurant Saboroso!'
+  });
+
+});
+
+
+router.get('/reservations', function(req, res, next) {
+
+  res.render('reservations', {
+    title: 'Reserva - Restaurant Saboroso!'
+  });
+
+});
+
+
+router.get('/services', function(req, res, next) {
+
+  res.render('services', {
+    title: 'Serviços - Restaurant Saboroso!'
   });
 
 });
