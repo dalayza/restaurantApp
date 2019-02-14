@@ -1,15 +1,13 @@
 var conn = require('./../inc/db');
 var express = require('express');
+var menus = require('./../inc/menus');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  conn.query(`SELECT * FROM tb_menus ORDER BY title`, (err, results) => {
+  menus.getMenus().then(results => {
 
-    if (err) {
-      console.log(err);
-    }
     res.render('index', {
       title: 'Restaurant Saboroso!',
       menus: results
@@ -33,10 +31,15 @@ router.get('/contacts', function(req, res, next) {
 
 router.get('/menus', function(req, res, next) {
 
-  res.render('menus', {
-    title: 'Menus - Restaurant Saboroso!',
-    background: 'images/img_bg_1.jpg',
-    h1: 'Saboreie nosso menu!'
+  menus.getMenus().then(results => {
+
+    res.render('menus', {
+      title: 'Menus - Restaurant Saboroso!',
+      background: 'images/img_bg_1.jpg',
+      h1: 'Saboreie nosso menu!',
+      menus: results
+    });
+
   });
 
 });
