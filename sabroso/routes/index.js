@@ -23,7 +23,9 @@ router.get('/', function(req, res, next) {
 router.get('/contacts', function(req, res, next) {
 
   res.render('contacts', {
-    title: 'Contato - Restaurant Saboroso!'
+    title: 'Contato - Restaurant Saboroso!',
+    background: 'images/img_bg_3.jpg',
+    h1: 'Diga um oi!'
   });
 
 });
@@ -32,7 +34,9 @@ router.get('/contacts', function(req, res, next) {
 router.get('/menus', function(req, res, next) {
 
   res.render('menus', {
-    title: 'Menus - Restaurant Saboroso!'
+    title: 'Menus - Restaurant Saboroso!',
+    background: 'images/img_bg_1.jpg',
+    h1: 'Saboreie nosso menu!'
   });
 
 });
@@ -41,7 +45,9 @@ router.get('/menus', function(req, res, next) {
 router.get('/reservations', function(req, res, next) {
 
   res.render('reservations', {
-    title: 'Reserva - Restaurant Saboroso!'
+    title: 'Reserva - Restaurant Saboroso!',
+    background: 'images/img_bg_2.jpg',
+    h1: 'Reserve uma mesa!'
   });
 
 });
@@ -50,7 +56,9 @@ router.get('/reservations', function(req, res, next) {
 router.get('/services', function(req, res, next) {
 
   res.render('services', {
-    title: 'Serviços - Restaurant Saboroso!'
+    title: 'Serviços - Restaurant Saboroso!',
+    background: 'images/img_bg_1.jpg',
+    h1: 'É um prazer poder servir!'
   });
 
 });
