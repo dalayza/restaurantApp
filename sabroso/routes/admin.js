@@ -13,6 +13,8 @@ router.get("/", (req, res, next) => {
 
 router.get("/login", (req, res, next) => {
 
+    if (!req.session.views) req.session.views = 0;
+
     res.render("admin/login");
 
 });
