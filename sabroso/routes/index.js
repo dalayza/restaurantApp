@@ -67,7 +67,17 @@ router.post('/reservations', function(req, res, next) {
   } else if (!req.body.time) {
     reservations.render(req, res, "Selecione a hora");
   } else {
-    res.send(req.body);
+
+      reservations.save(req.body).then(results => {
+        
+        req.body = {};
+        reservations.render(req, res, null, "Reserva realizada com sucesso!");
+
+    }).catch(err => {
+
+      reservations.render(req, res, err.message);
+
+    });
   }
 
 });
