@@ -18,10 +18,10 @@ app.set('view engine', 'ejs');
 app.use(session({
   store: new RedisStore({
     host: 'localhost',
-    port: 6379
+    port: 6379,
   }),
-  secret: 'p@ssw0rd', // session secret
-  resave: true, // sesion expirar
+  secret: 'p@ssw0rd',
+  resave: true,
   saveUninitialized: true
 }));
 
