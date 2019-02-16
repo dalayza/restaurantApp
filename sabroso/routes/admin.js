@@ -3,6 +3,28 @@ var users = require('./../inc/users');
 var router = express.Router();
 
 
+// Middleware
+router.use((req, res, next) => {
+
+    if (['/login'].indexOf(req.url) === -1 && !req.session.user) {
+        res.redirect("/admin/login");
+    } else {
+        next();
+    }
+    // console.log("Middleware: ", req.url);
+
+});
+
+
+router.get("/logout", (req, res, next) => {
+
+    delete req.session.user;
+
+    res.redirect("/admin/login");
+
+});
+
+
 router.get("/", (req, res, next) => {
 
     res.render("admin/index");
@@ -18,7 +40,7 @@ router.post("/login", (req, res, next) => {
         users.render(req, res, "Preencha los campos senha.");
     } else {
         users.login(req.body.email, req.body.password).then(user => {
-            // req.session.user = user; // guardando na variavel de session
+            req.session.user = user; // guardando na variavel de session
             res.redirect("/admin"); //dados corretos, e redireciona para Admin
         }).catch (err => {
             users.render(req, res, err.message || err);
