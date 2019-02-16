@@ -20,7 +20,7 @@ app.use(session({
     host: 'localhost',
     port: 6379
   }),
-  secret: 'p@ssw0rd',
+  secret: 'p@ssw0rd', // session secret
   resave: true, // sesion expirar
   saveUninitialized: true
 }));
