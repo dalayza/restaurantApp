@@ -48,8 +48,8 @@ router.get('/emails', (req, res, next) => {
 
 router.get('/menus', (req, res, next) => {
 
-    getMenus().then(data => {
-        res.render('admin/menus', admin.getParams(req => {
+    menus.getMenus().then(data => {
+        res.render('admin/menus', admin.getParams(req,{
             data
         }));
     });

@@ -53,13 +53,13 @@ module.exports = {
                 active: false
             },{
                 text:"Reservas",
-                href:"/reservations",
+                href:"/admin/reservations",
                 icon:"calendar-check-o",
                 active: false
             },{
                 text:"Contatos",
-                href:"/admin",
-                icon:"home/contacts",
+                href:"/admin/contacts",
+                icon:"comments",
                 active: false
             },{
                 text:"Usuarios",
