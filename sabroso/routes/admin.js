@@ -20,7 +20,7 @@ router.use((req, res, next) => {
 // Middleware
 router.use((req, res, next) => {
 
-    req.menus = admin.getMenus();
+    req.menus = admin.getMenus(req);
 
     next();
 
