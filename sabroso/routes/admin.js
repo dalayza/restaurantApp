@@ -1,6 +1,7 @@
 var express = require('express');
 var users = require('./../inc/users');
 var admin = require('./../inc/admin');
+var menus = require('./../inc/menus');
 var router = express.Router();
 
 
@@ -46,7 +47,13 @@ router.get('/emails', (req, res, next) => {
 
 
 router.get('/menus', (req, res, next) => {
-    res.render('admin/menus', admin.getParams(req));
+
+    getMenus().then(data => {
+        res.render('admin/menus', admin.getParams(req => {
+            data
+        }));
+    });
+
 });
 
 
