@@ -141,3 +141,27 @@
     </div>
 
 <%- include('inc/footer') -%>
+
+
+
+<script>
+  let formCreate = document.querySelector("#modal-create form");
+
+  formCreate.addEventListener('submit', e => {
+
+    e.preventDefault();
+
+    let formCreateData = new FormData(formCreate);
+
+    fetch("menus", { // Mandar AJAX al servidor los datos
+      method: "POST", // metodo
+      body: formCreateData // datos del formulario
+    })
+      .then(response => response.json()) // promesa que espera una respuesta
+      .then(json => {
+        console.log("JSON: " + json);
+      });
+  });
+
+  // console.log(formCreateData);
+</script>
