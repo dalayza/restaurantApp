@@ -151,15 +151,15 @@
 
     e.preventDefault();
 
-    let formCreateData = new FormData(formCreate);
+    let formCreateData = new FormData(formCreate); // instancio la data en formato JSON
 
-    fetch("menus", { // Mandar AJAX al servidor los datos
+    fetch("menus", { // mandar AJAX al servidor los datos
       method: "POST", // metodo
       body: formCreateData // datos del formulario
     })
       .then(response => response.json()) // promesa que espera una respuesta
       .then(json => {
-        console.log("JSON: " + json);
+        window.location.reload(); // actualiza automatico la pantalla
       });
   });
 

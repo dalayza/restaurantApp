@@ -59,7 +59,15 @@ router.get('/menus', (req, res, next) => {
 
 router.post('/menus', (req, res, next) => {
 
-    res.send(req.body);
+    menus.save(req.fields, req.files).then(results => {
+
+        res.send(results); // imprime el JSON
+
+    }).catch(err => {
+
+        res.send(err);
+
+    });
 
 });
 
