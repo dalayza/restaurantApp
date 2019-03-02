@@ -43,7 +43,7 @@
                   <td><%= row.title%></td>
                   <td><%= row.description%></td>
                   <td><%= row.price%></td>
-                  <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
+                  <td><button type="button" class="btn btn-xs btn-info btn-update"><i
                         class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
                         class="fa fa-trash"></i> Excluir</button></td>
                 </tr>
@@ -145,6 +145,7 @@
 
 
 <script>
+  // ADD NEW
   let formCreate = document.querySelector("#modal-create form");
 
   formCreate.addEventListener('submit', e => {
@@ -164,4 +165,47 @@
   });
 
   // console.log(formCreateData);
+
+
+
+  // EDIT
+  let formUpdate = document.querySelector("#modal-update form");
+
+  [...document.querySelectorAll('.btn-update')].forEach(btn => {
+
+    btn.addEventListener('click', e => {
+
+      // console.log(e); // verifica el path en la consola de cual ruta utiliza
+
+      let tr = e.path.find(el => { // va ir elemento por elemento buscando tr
+
+        return (el.tagName.toUpperCase() === 'TR');
+
+      });
+
+      // console.log(tr); // validar si consiguio el tr
+      
+      let data = JSON.parse(tr.dataset.row);
+
+      console.log(data); // validar si recibe los datos en JSON
+
+      for (let name in data) {
+
+        switch (name) {
+
+          case 'photo':
+            break;
+          default:
+            let input = formUpdate.querySelector(`[name=${name}]`).value = data[name];
+            if (input) input.value = data[name];
+
+        }
+
+      }
+
+      $('#modal-update').modal('show'); // usando JQUERY
+
+    });
+
+  });
 </script>

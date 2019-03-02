@@ -16,7 +16,6 @@ var app = express();
 
 // middleware
 app.use((req, res, next) => {
-
   if (req.method === 'POST') {
 
     var form = formidable.IncomingForm({
